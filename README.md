@@ -1,22 +1,39 @@
 # Animeify
 
-> Turn any photo into anime.
-
-One tap. Six seconds. Ready to post. Studios Ghibli, Shinkai, shonen — pick your vibe.
-
-## What you get
-
-- **Six signature styles** — From Ghibli-soft to neon-cyberpunk. No prompt engineering required.
-- **Six seconds** — Upload, pick a style, share. No render queue, no waiting.
-- **Faces stay yours** — We never train on your photos. Your likeness is yours.
-
-## Category
-
-Consumer AI. Part of a 50-product exploration of high-demand consumer and SMB markets.
+> Turn any photo into anime. One tap. Six seconds. Ready to post.
 
 ## Status
 
-Landing page live with interactive demo and functional waitlist.
+**v0 skeleton** — landing page ported to Next.js, `/try` demo with mocked anime CSS filter, waitlist API wired. No real AI model yet.
 
-- **Live:** https://mukundakatta.github.io/animeify/
-- **Waitlist API:** https://waitlist-api-sigma.vercel.app/api/waitlist
+## Stack
+
+- **Next.js 15** (App Router)
+- **TypeScript** (strict)
+- **Tailwind CSS v4** (`@tailwindcss/postcss`, CSS-first, no config file)
+- **pnpm**
+
+## Routes
+
+| Route | Description |
+|---|---|
+| `/` | Landing page — hero, demo widget, features, waitlist form |
+| `/try` | Upload a photo → apply mocked anime SVG filter → before/after |
+| `/api/waitlist` | `POST { email }` → forwards to waitlist-api-sigma with `product: "animeify"` |
+
+## Run locally
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Deploy
+
+Push to GitHub and import into [Vercel](https://vercel.com). Next.js is auto-detected — no config changes required. No environment variables needed.
+
+```bash
+pnpm build   # verify clean build locally
+```
